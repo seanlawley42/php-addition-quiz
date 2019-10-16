@@ -43,6 +43,7 @@ shuffle($answers);
 echo "<input type = 'submit' class = 'btn' name = 'answer' value = '" . $answers[0] . "'>";
 echo "<input type = 'submit' class = 'btn' name = 'answer' value = '" . $answers[1] . "'>";
 echo "<input type = 'submit' class = 'btn' name = 'answer' value = '" . $answers[2] . "'>";
+echo "<input type = 'hidden' name = 'correctAnswer' value = '" . $questions['correctAnswer'] . "'>";
 echo "</form>";
 }
 // Toast correct and incorrect answers
@@ -65,14 +66,14 @@ if (isset($_POST['answer']) && isset($_POST['correctAnswer'])) {
     }
 
 // If all questions have been asked, give option to show score
-elseif ($whichQuestionBruh == 11) {
+if ($whichQuestionBruh == 11) {
     echo '<h1 class="quiz">Your labors are over. For now...</h1>';
     echo '<form action="index.php?p=' . ($whichQuestionBruh + 1) . '"method="post">';
     echo '<input type="submit" class="btn" name="answer" value="Where Do You Stand?" />';
     echo '</form>';
 }
 // Or we can start a new game
-elseif ($whichQuestionBruh == 12){
+if ($whichQuestionBruh == 12){
     echo '<h2 class="quiz">Congratulations, mighty warrior. </h2>';
     echo '<h3>You are on your way to becoming an addition master!</h3>';
     echo '<p>You got </p>';
@@ -82,8 +83,7 @@ elseif ($whichQuestionBruh == 12){
     echo '<input type="submit" class="btn" name="quiz" value="Try again?" />';
     echo '</form>';
 }
-var_dump($_SESSION);
-var_dump(session_status());
+
 //Change the background color to create a dazzling, psychedelic showstopper of wonderment
 function backgrounderz(){
     $uno = rand(120,180);
